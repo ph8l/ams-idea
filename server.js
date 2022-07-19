@@ -1,13 +1,15 @@
-var express = require("express");
-var app = express();
-var port = process.env["PORT"] || 5555;
+const express = require('express')
+const app = express()
 
-app.use(express.static(__dirname + '/build'));
+app.use(express.json())
+app.use(express.static('build'))
 
-app.get('/hello', function (req, res) {
-  res.send('Hello World!');
-});
+const port = process.env.PORT || 4000
 
-app.listen(port, function () {
-  console.log('Example app listening on port ' + port);
+app.get('/test', (req, res) => { 
+  res.send('test route')
+})
+app.listen(port, () => {
+
+    console.log(`listening on port ${port}`)
 })
